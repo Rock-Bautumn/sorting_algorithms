@@ -33,5 +33,6 @@ int partition(int *array, int left, int right, size_t size);
 void merge_sort(int *array, size_t size);
 void mergeSort(int *array, int start, int end, int *temp_array);
 void merge(int *array, int start, int mid, int end, int *temp_array);
+void print_labeled_array(char *label, int *array, int size);
 
 #endif

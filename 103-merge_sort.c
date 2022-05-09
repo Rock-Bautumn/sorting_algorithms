@@ -2,9 +2,23 @@
 #include "sort.h"
 
 /*
-int left_half_size = middle - left + 1;
-int right_half_size = right - middle;
+ * int left_half_size = middle - left + 1;
+ * int right_half_size = right - middle;
 */
+
+/**
+ * print_labeled_array - prints the array with the name of the array
+ * @label: The name we are printing with the label
+ * @array: The array to print
+ * @size: How many elements of the array to print
+ * Return: void
+*/
+
+void print_labeled_array(char *label, int *array, int size)
+{
+	printf("[%s]: ", label);
+	print_array(array, size);
+}
 
 /**
  * merge_sort_merge - This does the actual work of the merge sort
@@ -17,16 +31,18 @@ int right_half_size = right - middle;
 void merge_sort_merge(int *array, int left, int middle, int right)
 {
 	int x, y, insertion_point;
-int left_half_size = middle - left + 1;
-int right_half_size = right - middle;
+	int left_half_size = middle - left + 1;
+	int right_half_size = right - middle;
 	int old_left[4096], old_right[4096];
+
+	printf("Merging...\n");
 	for (x = 0; x < left_half_size; x++)
 		old_left[x] = array[left + x];
+	print_labeled_array("left", &array[left], left_half_size);
 	for (x = 0; x < right_half_size; x++)
 		old_right[x] = array[(middle + x + 1)];
-	x = 0;
-	y = 0;
-	insertion_point = left;
+	print_labeled_array("right", &array[middle + 1], right_half_size);
+	x = 0, y = 0, insertion_point = left;
 	while (x < left_half_size && y < right_half_size)
 	{
 		if (old_left[x] <= old_right[y])
@@ -80,9 +96,12 @@ void merge_sorter(int *array, int left, int right)
 	if (left < right)
 	{
 		int middle = (right - left) / 2 + left;
+
 		merge_sorter(array, left, middle);
 		merge_sorter(array, (middle + 1), right);
 
 		merge_sort_merge(array, left, middle, right);
+		print_labeled_array("done", &array[left], (right - left));
+
 	}
 }
