@@ -1,6 +1,11 @@
 #include <stdlib.h>
 #include "sort.h"
 
+/*
+int left_half_size = middle - left + 1;
+int right_half_size = right - middle;
+*/
+
 /**
  * merge_sort_merge - This does the actual work of the merge sort
  * @array: The original array address we are sorting, even if recursively
@@ -9,13 +14,12 @@
  * @right: The right of the right half side
  * Return: void
  */
-
 void merge_sort_merge(int *array, int left, int middle, int right)
 {
 	int x, y, insertion_point;
-	int left_half_size = middle - left + 1;
-	int right_half_size = right - middle;
-	int old_left[left_half_size], old_right[right_half_size];
+int left_half_size = middle - left + 1;
+int right_half_size = right - middle;
+	int old_left[4096], old_right[4096];
 	for (x = 0; x < left_half_size; x++)
 		old_left[x] = array[left + x];
 	for (x = 0; x < right_half_size; x++)
