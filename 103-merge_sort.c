@@ -102,7 +102,7 @@ void merge_sorter(int *array, int left, int right)
 		merge_sorter(array, (middle + 1), right);
 
 		merge_sort_merge(array, left, middle, right);
-		print_labeled_array("done", &array[left], (right - left + 1));
+		print_labeled_array("Done", &array[left], (right - left + 1));
 
 	}
 }
