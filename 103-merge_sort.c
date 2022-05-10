@@ -93,15 +93,16 @@ void merge_sort(int *array, size_t size)
  */
 void merge_sorter(int *array, int left, int right)
 {
+
 	if (left < right)
 	{
-		int middle = (right - left) / 2 + left;
+		int middle = (right - left - 1) / 2 + left;
 
 		merge_sorter(array, left, middle);
 		merge_sorter(array, (middle + 1), right);
 
 		merge_sort_merge(array, left, middle, right);
-		print_labeled_array("done", &array[left], (right - left));
+		print_labeled_array("done", &array[left], (right - left + 1));
 
 	}
 }
