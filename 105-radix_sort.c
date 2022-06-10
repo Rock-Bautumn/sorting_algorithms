@@ -1,6 +1,26 @@
 #include "sort.h"
 
 /**
+ * maxIntInArray - Finds the largest number in an array of integers
+ * @arr: The array to search through
+ * @n: The number of digits of the array (to look through on the left side)
+ * Return: The largest number from the array
+*/
+
+int maxIntInArray(int arr[], int n)
+{
+	int i;
+	int max = arr[0];
+
+	for (i = 1; i < n; i++)
+	{
+		if (arr[i] > max)
+			max = arr[i];
+	}
+	return (max);
+}
+
+/**
  * radix_sort - Sorting using place values from least significant digit
  * @arr: The array to sort
  * @n: the number of digits of the array (to sort on the left side)
@@ -9,15 +29,13 @@
 
 void radix_sort(int arr[], int n)
 {
-	int maximum = arr[0], digits = 0, i, j, num, power;
+	int digits = 0, i, j, maximum, num, power;
 	int count[10];
 	int *new_array;
 
-	for (i = 1; i < n; i++)
-	{
-		if (maximum < arr[i])
-		maximum = arr[i];
-	}
+	if (arr == NULL || n < 2)
+		return;
+	maximum = maxIntInArray(arr, n);
 	while (maximum > 0)
 	{
 		digits++;
